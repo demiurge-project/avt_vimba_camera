@@ -1019,7 +1019,7 @@ void AvtVimbaCamera::updateGainConfig(Config& config)
 
   if (config.gain != config_.gain || on_init_)
   {
-    configureFeature("Gain", static_cast<float>(config.gain), config.gain);
+    configureFeature("GainRaw", static_cast<VmbInt64_t>(config.gain), config.gain);
   }
   if (config.gain_auto != config_.gain_auto || on_init_)
   {
@@ -1032,11 +1032,11 @@ void AvtVimbaCamera::updateGainConfig(Config& config)
   }
   if (config.gain_auto_max != config_.gain_auto_max || on_init_)
   {
-    configureFeature("GainAutoMax", static_cast<float>(config.gain_auto_max), config.gain_auto_max);
+    configureFeature("GainAutoMax", static_cast<VmbInt64_t>(config.gain_auto_max), config.gain_auto_max);
   }
   if (config.gain_auto_min != config_.gain_auto_min || on_init_)
   {
-    configureFeature("GainAutoMin", static_cast<float>(config.gain_auto_min), config.gain_auto_min);
+    configureFeature("GainAutoMin", static_cast<VmbInt64_t>(config.gain_auto_min), config.gain_auto_min);
   }
   if (config.gain_auto_outliers != config_.gain_auto_outliers || on_init_)
   {
@@ -1226,7 +1226,7 @@ void AvtVimbaCamera::getCurrentState(diagnostic_updater::DiagnosticStatusWrapper
 {
   stat.add("ID", guid_);
   stat.add("Info", diagnostic_msg_);
-  stat.add("Temperature", getDeviceTemp());
+  //stat.add("Temperature", getDeviceTemp());
 
   switch (camera_state_)
   {
